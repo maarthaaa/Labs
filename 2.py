@@ -10,12 +10,11 @@ othello = {
    "Main chacters":"Othello, Iago" 
 }
 r_and_j = {
-    "Characterictics":litForm,
+    "Characteristics":litForm,
     "Year": 1597,
    "Main chacters":"Romeo, Juliet" 
 }
 
-print("1 OPRTION")
 for x,y in othello.items():
     print(x,y)
 print("----")
