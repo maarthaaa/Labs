@@ -40,8 +40,6 @@ lab1.grid(row=0,column=1,sticky="nsew")
 entry1 = tk.Entry(bg="white",fg="black")
 entry1.grid(row=1, column=1,sticky="nsew")
 
-# lbl = tk.Label(window, text="")
-# lbl.grid(row=3, column=2,sticky="nsew")
 
 but = tk.Button(master =window, text = "Encode!",command=code)
 but.grid(row=0,column=2,sticky="nsew")
