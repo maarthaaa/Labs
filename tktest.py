@@ -5,6 +5,7 @@ def code():
     message = entry.get()
     try:
         global encode
+        output = []
         key = int(entry1.get())
         encode = [" "] * key
         for row in range(key):
@@ -13,9 +14,11 @@ def code():
                 encode[row]+=message[p] 
                 p+=key
             print(encode)
-            var = tk.StringVar(value=encode)
-            lst = tk.Listbox(window, listvariable= var)
-            lst.grid(row=3, column=2,sticky="nsew")
+        output.append("".join(encode))
+        for val in output:
+            out=str(val)
+            txt = out.replace(" ","")
+            lab3.config(text=txt)
 
     except:
         print("Durak")
@@ -40,6 +43,8 @@ lab1.grid(row=0,column=1,sticky="nsew")
 entry1 = tk.Entry(bg="white",fg="black")
 entry1.grid(row=1, column=1,sticky="nsew")
 
+lab3 = tk.Label(text=" ", bg="black",fg="white")
+lab3.grid(row=3, column=2,sticky="nsew")
 
 but = tk.Button(master =window, text = "Encode!",command=code)
 but.grid(row=0,column=2,sticky="nsew")
