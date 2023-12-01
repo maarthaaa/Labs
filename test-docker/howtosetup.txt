@@ -1,0 +1,28 @@
+Requirements
+XQuarz preinstalled
+
+The DISPLAY environment variable will instruct the X client which X server to connect to. 
+The X display server install itself normally as the display number 0 on your local machine. 
+However, the ‘local machine’ refers to the machine on which we run the application, in our case the docker container. 
+We need to re-route this display to our ‘true’ local machine.
+
+The server knows where to redirect the X network traffic via the DISPLAY environment variable. 
+To set this up, we need to follow these steps:
+
+Get Host IP
+IP=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
+
+Set the DISPLAY environment variable:
+export DISPLAY=$IP:0
+
+Add Path to our xhost:
+export PATH=/usr/X11/bin/xhost:$PATH
+
+Add IP to xhost
+xhost + $IP
+
+Run container
+docker run -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --name tkinter-app tkinter-docker
+
+From: https://devpress.csdn.net/cloudnative/62f0de46c6770329307f4e49.html
+
